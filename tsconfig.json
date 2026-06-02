@@ -1,0 +1,5 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*", "src/pages/worker/pngToPdf_worker.ts"],
+  "exclude": ["dist"]
+}

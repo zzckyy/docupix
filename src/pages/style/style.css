@@ -1,0 +1,38 @@
+:root{
+    --text: black;
+    --primary: violet;
+}
+
+.brand{
+    color: var(--primary);
+    font-weight: bold;
+}
+
+#app{
+    min-height: 80vh;
+}
+
+
+.dropzone-container{
+    width: 50vw;
+    height: 50vh;
+}
+
+.dropzone{
+    border: 4px solid var(--text);
+    width: 50%;
+    height: 80%;
+    border-style: dashed;
+}
+
+.file-attached{
+    width: 100%;
+}
+
+.button{
+    background-color: var(--primary);
+}
+
+.hidden{
+    display: none !important;
+}

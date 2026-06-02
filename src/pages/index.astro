@@ -1,0 +1,51 @@
+---
+import Layout from "./layouts/base.astro";
+
+const title = "docupix";
+---
+
+<Layout title={title}>
+    <div
+        class="is-flex is-justify-content-center is-align-items-center is-flex-direction-column"
+        id="app"
+    >
+        <div
+            class="box dropzone-container is-flex is-justify-content-center is-align-items-center is-flex-direction-column"
+        >
+            <div
+                class="box dropzone is-flex is-justify-content-center is-align-items-center is-flex-direction-column"
+            >
+                <i class="bx bx-folder-plus is-size-1"></i>
+                <p>Drop Image Here</p>
+                <input
+                    type="file"
+                    name=""
+                    id="input"
+                    accept="application/pdf"
+                    hidden
+                />
+                <button
+                    class="button is-outlined is-danger is-primary mt-3"
+                    id="inputBtn">Select Files</button
+                >
+            </div>
+            <div
+                class="box file-attached is-flex is-justify-content-space-between"
+                id="filezone"
+            >
+                <div class="is-flex">
+                    <i class="bx bx-paperclip is-size-4 mr-4"></i>
+                    <p id="filename"></p>
+                </div>
+                <div class="is-flex">
+                    <p id="filesize">0.1MB</p>
+                    <button class="" id="processBtn"
+                        ><i class="bx bx-send is-size-4 ml-3"></i></button
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/scripts/pdfToPng.ts"></script>
+</Layout>

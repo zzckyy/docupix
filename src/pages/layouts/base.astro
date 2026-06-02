@@ -1,0 +1,29 @@
+---
+import "bulma/css/bulma.min.css";
+import 'boxicons/css/boxicons.min.css'
+import '../style/style.css'
+
+const {title} = Astro.props;
+const brand = "docupix"
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="p-4">
+			<nav class="is-flex is-justify-content-space-around">
+				<a href="/" class="brand">{brand}</a>
+				<a href="/" class="brand">Home</a>
+			</nav>
+		<slot />
+
+		
+	</body>
+</html>
+

@@ -1,0 +1,25 @@
+{
+  "name": "docupix",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.4.2",
+    "boxicons": "^2.1.4",
+    "bulma": "^1.0.4",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
+    "pdfjs-dist": "^6.0.227"
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.7"
+  }
+}
