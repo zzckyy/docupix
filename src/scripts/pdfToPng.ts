@@ -76,10 +76,12 @@ const init = () => {
 
   processBtn.onclick = async () => {
     if (!selectedFile) return;
-    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    processBtn.classList.add("hidden");
+    const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
     await delay(2000);
     await convertPdfToPng(selectedFile);
+    processBtn.classList.remove("hidden");
   };
 
   if (dropzone) {
