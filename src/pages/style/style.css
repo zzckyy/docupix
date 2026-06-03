@@ -7,8 +7,16 @@
 }
 
 .brand{
-    color: var(--primary);
+    color: var(--text-reverse);
     font-weight: bold;
+    background-color: var(--primary);
+    padding: 8px;
+    box-shadow: 4px 4px 0px black;
+    /* height: 30px; */
+}
+
+.nav-logo{
+    width: 150px;
 }
 
 #app{
@@ -26,6 +34,7 @@
     min-width: 70%;
     min-height: 100%;
     border-style: dashed;
+    cursor: pointer;
 }
 
 .file-attached{
@@ -35,6 +44,11 @@
 .button{
     background-color: var(--primary);
     color: var(--text-reverse);
+    box-shadow: 4px 4px 0px black;
+    border: none;
+    font-weight: bold;
+    border-radius: 0px;
+
 }
 
 .hidden{
