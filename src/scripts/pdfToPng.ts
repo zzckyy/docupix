@@ -104,8 +104,14 @@ const init = () => {
 
   let selectedFile: File | null = null;
   filezone.classList.add("hidden");
+  inputBtn.onclick = (e) => {
+    e.stopPropagation
+    input.click()
+  };
 
-  inputBtn.onclick = () => input.click();
+  dropzone?.addEventListener("click", () =>{
+    input.click();
+  })
 
   input.addEventListener("change", (event) => {
     const file = (event.target as HTMLInputElement)?.files?.[0];
