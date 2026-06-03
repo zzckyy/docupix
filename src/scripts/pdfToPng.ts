@@ -12,40 +12,54 @@ const updateFileInfo = (file: File, filename: HTMLElement, filesize: HTMLElement
   filezone.classList.remove("hidden");
 };
 
-const convertPdfToPng = async (file: File) => {
-  const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-  const totalPages = pdf.numPages;
-  const zip = new JSZip();
+const convertPdfToPng = async (file: File, showLoading: (text: string) => void, hideLoading: () => void, setButtonDisabled: (disabled: boolean) => void) => {
+  try {
+    showLoading("Converting...");
+    setButtonDisabled(true);
 
-  for (let i = 1; i <= totalPages; i++) {
-    const page = await pdf.getPage(i);
-    const viewport = page.getViewport({ scale: 2 });
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
-    if (!context) return;
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    const totalPages = pdf.numPages;
+    const zip = new JSZip();
 
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
+    for (let i = 1; i <= totalPages; i++) {
+      showLoading(`Converting page ${i} of ${totalPages}...`);
+      const page = await pdf.getPage(i);
+      const viewport = page.getViewport({ scale: 2 });
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      if (!context) return;
 
-    await page.render({ canvas, viewport }).promise;
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
 
-    const blob = await new Promise<Blob | null>((resolve) =>
-      canvas.toBlob(resolve, "image/png"),
-    );
+      await page.render({ canvas, viewport }).promise;
 
-    if (!blob) return;
+      const blob = await new Promise<Blob | null>((resolve) =>
+        canvas.toBlob(resolve, "image/png"),
+      );
 
-    if (totalPages === 1) {
-      saveAs(blob, file.name.replace(/\.pdf$/i, ".png"));
-    } else {
-      zip.file(`page-${i}.png`, blob);
+      if (!blob) return;
+
+      if (totalPages === 1) {
+        saveAs(blob, file.name.replace(/\.pdf$/i, ".png"));
+      } else {
+        zip.file(`${file.name.replace(/\.pdf$/i, "")} page-${i}.png`, blob);
+      }
     }
-  }
 
-  if (totalPages > 1) {
-    const zipBlob = await zip.generateAsync({ type: "blob" });
-    saveAs(zipBlob, file.name.replace(/\.pdf$/i, ".zip"));
+    if (totalPages > 1) {
+      showLoading("Finalizing download...");
+      const zipBlob = await zip.generateAsync({ type: "blob" });
+      saveAs(zipBlob, file.name.replace(/\.pdf$/i, ".zip"));
+    }
+
+    hideLoading();
+  } catch (error) {
+    console.error("Conversion error:", error);
+    hideLoading();
+  } finally {
+    setButtonDisabled(false);
   }
 };
 
@@ -57,10 +71,36 @@ const init = () => {
   const filezone = document.getElementById("filezone");
   const processBtn = document.getElementById("processBtn");
   const dropzone = document.querySelector(".dropzone");
+  const sendIcon = document.querySelector("#send");
+  const loadingContainer = document.getElementById("loadingContainer");
+  const loadingText = document.getElementById("loadingText");
 
-  if (!inputBtn || !input || !filename || !filesize || !filezone || !processBtn) {
+  if (!inputBtn || !input || !filename || !filesize || !filezone || !processBtn || !sendIcon || !loadingContainer) {
     return;
   }
+
+  const showLoading = (text: string) => {
+    if (loadingText) loadingText.innerText = text;
+    loadingContainer.classList.remove("hidden");
+  };
+
+  const hideLoading = () => {
+    loadingContainer.classList.add("hidden");
+  };
+
+  const setButtonDisabled = (disabled: boolean) => {
+    if(processBtn instanceof HTMLButtonElement){
+      processBtn.disabled = disabled;
+    if (disabled) {
+      processBtn.style.opacity = "0.5";
+      processBtn.style.cursor = "not-allowed";
+    } else {
+      processBtn.style.opacity = "1";
+      processBtn.style.cursor = "pointer";
+    }
+    }
+    
+  };
 
   let selectedFile: File | null = null;
   filezone.classList.add("hidden");
@@ -76,12 +116,7 @@ const init = () => {
 
   processBtn.onclick = async () => {
     if (!selectedFile) return;
-    processBtn.classList.add("hidden");
-    const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
-    await delay(2000);
-    await convertPdfToPng(selectedFile);
-    processBtn.classList.remove("hidden");
+    await convertPdfToPng(selectedFile, showLoading, hideLoading, setButtonDisabled);
   };
 
   if (dropzone) {

@@ -25,7 +25,7 @@ const title = "docupix";
                     hidden
                 />
                 <button
-                    class="button is-outlined is-danger is-primary mt-3"
+                    class="button mt-3"
                     id="inputBtn">Select Files</button
                 >
             </div>
@@ -40,9 +40,13 @@ const title = "docupix";
                 <div class="is-flex">
                     <p id="filesize">0.1MB</p>
                     <button class="" id="processBtn"
-                        ><i class="bx bx-send is-size-4 ml-3"></i></button
+                        ><i class="bx bx-save is-size-4 ml-3" id="send"></i></button
                     >
                 </div>
+            </div>
+            <div class="box loading-container hidden" id="loadingContainer">
+                <div class="loader"></div>
+                <p id="loadingText">Converting...</p>
             </div>
         </div>
     </div>
