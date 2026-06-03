@@ -104,8 +104,10 @@ const init = () => {
 
   let selectedFile: File | null = null;
   filezone.classList.add("hidden");
+
+  //klik select file
   inputBtn.onclick = (e) => {
-    e.stopPropagation
+    e.stopPropagation();
     input.click()
   };
 
@@ -115,13 +117,29 @@ const init = () => {
 
   input.addEventListener("change", (event) => {
     const file = (event.target as HTMLInputElement)?.files?.[0];
+
+    //cek jika tidak ada file
     if (!file) return;
+
+    //cek jika file tidak pdf
+    if(file.type !== 'application/pdf'){
+      alert("file must be pdf")
+      return;
+    }
     selectedFile = file;
     updateFileInfo(file, filename, filesize, filezone);
+
+    
   });
 
   processBtn.onclick = async () => {
     if (!selectedFile) return;
+
+    //pengecekan pdf
+    if(selectedFile.type !== 'application/pdf'){
+      alert("file must be pdf")
+      return;
+    } 
     await convertPdfToPng(selectedFile, showLoading, hideLoading, setButtonDisabled);
   };
 
