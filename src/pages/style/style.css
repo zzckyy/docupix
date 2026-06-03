@@ -15,8 +15,8 @@
 
 
 .dropzone-container{
-    width: 50vw;
-    height: 50vh;
+    min-width: 30vw;
+    min-height: 50vh;
 }
 
 .dropzone{
@@ -46,7 +46,7 @@
     justify-content: center;
     gap: 1rem;
     padding: 2rem;
-    width: 100%;
+    width: 50vw;
 }
 
 .loader {
@@ -62,11 +62,27 @@
     scale: 1.2;
 }
 
+#filename{
+    overflow-y:scroll;
+    width: 100%;
+    height: 25px;
+}
+
 @keyframes spin {
     0% { 
         transform: rotate(0deg); 
     }
     100% { 
         transform: rotate(360deg); 
+    }
+}
+
+@media screen and (max-width: 768px) { 
+    .dropzone-container{
+        min-width: 90vw;
+    }
+
+    .loading-container{
+        min-width: 90vw;
     }
 }
