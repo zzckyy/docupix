@@ -88,6 +88,14 @@
     width: 70vw;
 }
 
+.box-danger{
+    width: 100%;
+    border: none;
+    background-color: rgba(252, 68, 68, 0.5);
+    color: var(--text-reverse);
+    font-weight: bold;
+}
+
 @keyframes spin {
     0% { 
         transform: rotate(0deg); 

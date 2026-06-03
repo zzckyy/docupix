@@ -74,8 +74,9 @@ const init = () => {
   const sendIcon = document.querySelector("#send");
   const loadingContainer = document.getElementById("loadingContainer");
   const loadingText = document.getElementById("loadingText");
+  const boxDanger = document.getElementById("boxDanger")
 
-  if (!inputBtn || !input || !filename || !filesize || !filezone || !processBtn || !sendIcon || !loadingContainer) {
+  if (!inputBtn || !input || !filename || !filesize || !filezone || !processBtn || !sendIcon || !loadingContainer || !boxDanger) {
     return;
   }
 
@@ -123,9 +124,12 @@ const init = () => {
 
     //cek jika file tidak pdf
     if(file.type !== 'application/pdf'){
-      alert("file must be pdf")
+      boxDanger.classList.remove("hidden");
+
       return;
     }
+
+    boxDanger.classList.add("hidden");
     selectedFile = file;
     updateFileInfo(file, filename, filesize, filezone);
 
@@ -135,11 +139,12 @@ const init = () => {
   processBtn.onclick = async () => {
     if (!selectedFile) return;
 
-    //pengecekan pdf
+    //pengecekan pdf saat klik process
     if(selectedFile.type !== 'application/pdf'){
-      alert("file must be pdf")
+      boxDanger.classList.remove('hidden');
       return;
     } 
+    boxDanger.classList.add('hidden');
     await convertPdfToPng(selectedFile, showLoading, hideLoading, setButtonDisabled);
   };
 
