@@ -6,9 +6,11 @@ const title = "docupix";
 
 <Layout title={title}>
     <div
-        class="is-flex is-justify-content-center is-align-items-center is-flex-direction-column"
+        class="is-flex is-justify-content-start is-align-items-center is-flex-direction-column mt-6"
         id="app"
     >
+        <h1 class="is-size-3 has-text-weight-bold is-capitalized has-text-centered">CONVERT YOUR PDF DOCUMENT TO PNG IMAGES</h1>
+
         <div
             class="box dropzone-container is-flex is-justify-content-center is-align-items-center is-flex-direction-column is-flex-wrap-wrap"
         >
@@ -50,6 +52,8 @@ const title = "docupix";
             <p id="loadingText">Converting...</p>
         </div>
     </div>
+
+    <div class="box"></div>
 
     <script type="module" src="/src/scripts/pdfToPng.ts"></script>
 </Layout>

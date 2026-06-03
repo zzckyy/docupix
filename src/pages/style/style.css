@@ -80,9 +80,14 @@
 @media screen and (max-width: 768px) { 
     .dropzone-container{
         min-width: 90vw;
+        min-height: 30vh;
     }
 
     .loading-container{
         min-width: 90vw;
+    }
+
+    .dropzone{
+        width: 90%;
     }
 }
