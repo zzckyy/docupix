@@ -2,6 +2,8 @@
     --text: black;
     --primary: rgb(128, 31, 207);
     --text-reverse: white;
+
+    --box-width-desktop: 30vw;
 }
 
 .brand{
@@ -15,14 +17,14 @@
 
 
 .dropzone-container{
-    min-width: 30vw;
-    min-height: 50vh;
+    min-width: var(--box-width-desktop);
+    /* min-height: 50vh; */
 }
 
 .dropzone{
     border: 4px solid var(--text);
-    width: 50%;
-    height: 80%;
+    min-width: 70%;
+    min-height: 100%;
     border-style: dashed;
 }
 
@@ -46,7 +48,7 @@
     justify-content: center;
     gap: 1rem;
     padding: 2rem;
-    width: 50vw;
+    width: var(--box-width-desktop);
 }
 
 .loader {
