@@ -9,13 +9,17 @@ const title = "docupix";
         class="is-flex is-justify-content-start is-align-items-center is-flex-direction-column mt-6"
         id="app"
     >
-        <h1 class="is-size-3 has-text-weight-bold is-capitalized has-text-centered">CONVERT YOUR PDF DOCUMENT TO PNG IMAGES</h1>
+        <h1
+            class="is-size-3 has-text-weight-bold is-capitalized has-text-centered"
+        >
+            CONVERT YOUR PDF DOCUMENT TO PNG IMAGES
+        </h1>
 
         <div
             class="box dropzone-container is-flex is-justify-content-center is-align-items-center is-flex-direction-column is-flex-wrap-wrap"
         >
             <div
-                class="box dropzone is-flex is-justify-content-center is-align-items-center is-flex-direction-column "
+                class="box dropzone is-flex is-justify-content-center is-align-items-center is-flex-direction-column"
             >
                 <i class="bx bx-folder-plus is-size-1"></i>
                 <p>Drop Image Here</p>
@@ -26,10 +30,7 @@ const title = "docupix";
                     accept="application/pdf"
                     hidden
                 />
-                <button
-                    class="button mt-3"
-                    id="inputBtn">Select Files</button
-                >
+                <button class="button mt-3" id="inputBtn">Select Files</button>
             </div>
             <div
                 class="box file-attached is-flex is-justify-content-space-between"
@@ -42,7 +43,8 @@ const title = "docupix";
                 <div class="is-flex">
                     <p id="filesize">0.1MB</p>
                     <button class="" id="processBtn"
-                        ><i class="bx bx-save is-size-4 ml-3" id="send"></i></button
+                        ><i class="bx bx-save is-size-4 ml-3" id="send"
+                        ></i></button
                     >
                 </div>
             </div>
@@ -52,8 +54,80 @@ const title = "docupix";
             <p id="loadingText">Converting...</p>
         </div>
     </div>
+    <div class="is-flex is-align-items-center is-flex-direction-column">
+        <div class="box content" id="content">
+            <h2 class="title is-4">Convert PDF to PNG</h2>
 
-    <div class="box"></div>
+            <p>
+                DocuPix is a simple, free tool that lets you convert PDF files
+                into high-quality PNG images directly in your browser. Unlike
+                traditional converters, everything happens on your device — no
+                uploads, no waiting, no risk.
+            </p>
+
+            <p>
+                PDF files are great for documents because they look consistent
+                across devices. However, they are not always supported
+                everywhere, especially on platforms that prefer images. PNG, on
+                the other hand, is widely supported across web, mobile, and
+                apps, making it easier to share and use.
+            </p>
+
+            <h3 class="title is-5">Why convert PDF to PNG?</h3>
+            <p>
+                Converting PDF to PNG allows you to turn document pages into
+                images that are easier to upload, share, and preview. For
+                example, you can quickly post a page from a PDF to social media,
+                include it in presentations, or use it in design projects.
+            </p>
+
+            <p>
+                PNG format also preserves visual quality without compression
+                artifacts, making it ideal for text-heavy documents,
+                screenshots, and graphics.
+            </p>
+
+            <h3 class="title is-5">How does DocuPix work?</h3>
+            <p>Using DocuPix is straightforward:</p>
+
+            <ul>
+                <li>
+                    Select or drag and drop your PDF file into the converter
+                </li>
+                <li>DocuPix processes the file instantly in your browser</li>
+                <li>Download the result as PNG images</li>
+            </ul>
+
+            <p>
+                If your PDF has multiple pages, each page will be converted into
+                a separate PNG. You can download them individually or as a
+                single ZIP file for convenience.
+            </p>
+
+            <h3 class="title is-5">Fast, free, and private</h3>
+            <p>
+                DocuPix is designed with privacy in mind. Your files never leave
+                your device — there is no upload to any server. This means your
+                data stays completely under your control.
+            </p>
+
+            <p>
+                Since everything runs locally, the conversion process is also
+                faster and works even with slow or unstable internet
+                connections.
+            </p>
+
+            <h3 class="title is-5">Is it safe?</h3>
+            <p>
+                Yes. Because DocuPix runs entirely in your browser, your files
+                are never stored, tracked, or processed remotely. There are no
+                hidden uploads or background transfers — what you open stays on
+                your device.
+            </p>
+
+            <p>Simple, secure, and efficient — that’s the DocuPix way.</p>
+        </div>
+    </div>
 
     <script type="module" src="/src/scripts/pdfToPng.ts"></script>
 </Layout>

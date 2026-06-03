@@ -10,7 +10,7 @@
 }
 
 #app{
-    min-height: 80vh;
+    min-height: 90vh;
 }
 
 
@@ -68,6 +68,10 @@
     height: 25px;
 }
 
+.content{
+    width: 70vw;
+}
+
 @keyframes spin {
     0% { 
         transform: rotate(0deg); 
@@ -89,5 +93,9 @@
 
     .dropzone{
         width: 90%;
+    }
+
+    .content{
+        width: 90vw;
     }
 }
