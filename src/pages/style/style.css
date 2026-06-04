@@ -2,6 +2,7 @@
     --text: black;
     --primary: rgb(128, 31, 207);
     --text-reverse: white;
+    --muted: rgb(234, 234, 234);
 
     --box-width-desktop: 30vw;
 }
@@ -23,6 +24,14 @@
     min-height: 90vh;
 }
 
+.stabilo{
+    background-color: var(--primary);
+    color: var(--text-reverse) !important;
+    box-shadow: 4px 4px 0px var(--text);
+    font-weight: bold;
+    text
+}
+
 
 .dropzone-container{
     min-width: var(--box-width-desktop);
@@ -35,6 +44,11 @@
     min-height: 100%;
     border-style: dashed;
     cursor: pointer;
+}
+
+.dropzone:hover{
+    scale: 1.1;
+    background-color: var(--muted);
 }
 
 .file-attached{

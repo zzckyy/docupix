@@ -1,7 +1,7 @@
 ---
 import Layout from "./layouts/base.astro";
 
-const title = "docupix";
+const title = "PDF to PNG Converter | docupix";
 ---
 
 <Layout title={title}>
@@ -9,10 +9,14 @@ const title = "docupix";
         class="is-flex is-justify-content-start is-align-items-center is-flex-direction-column mt-6"
         id="app"
     >
+        <p class="mb-3 stabilo p-1" style="opacity: 80%;">
+            Free PDF to PNG Converter
+        </p>
         <h1
-            class="is-size-3 has-text-weight-bold is-capitalized has-text-centered"
+            class="is-size-3 has-text-weight-bold is-capitalized has-text-centered mb-3"
         >
-            CONVERT YOUR PDF DOCUMENT TO PNG IMAGES
+            Turn PDF into PNG images, fast, private, in your browser. <br
+            /><span class="stabilo p-1">No upload required.</span>
         </h1>
 
         <div
@@ -22,7 +26,7 @@ const title = "docupix";
                 class="box dropzone is-flex is-justify-content-center is-align-items-center is-flex-direction-column mt-6"
             >
                 <i class="bx bx-folder-plus is-size-1"></i>
-                <p>Drop Image Here</p>
+                <p>Drop Your PDF Here</p>
                 <input
                     type="file"
                     name=""
@@ -30,7 +34,9 @@ const title = "docupix";
                     accept="application/pdf"
                     hidden
                 />
-                <button class="button mt-3" id="inputBtn">Select Files</button>
+                <button class="button mt-3" id="inputBtn"
+                    >Select PDF Files</button
+                >
             </div>
             <div
                 class="box file-attached is-flex is-justify-content-space-between"
@@ -52,16 +58,17 @@ const title = "docupix";
             <div class="box box-danger hidden" id="boxDanger">
                 <p class="has-text-centered">FILE MUST BE PDF FORMAT</p>
             </div>
-
         </div>
         <div class="box loading-container hidden" id="loadingContainer">
             <div class="loader"></div>
             <p id="loadingText">Converting...</p>
         </div>
-
     </div>
     <div class="is-flex is-align-items-center is-flex-direction-column">
-        <div class="box content" id="content">
+        <button class="button" id="infoBtn">
+            <h1 class="has-text-weight-bold" id="text-infoBtn"></h1>
+        </button>
+        <div class="box content hidden" id="content">
             <h2 class="title is-4">Convert PDF to PNG</h2>
 
             <p>
@@ -79,7 +86,7 @@ const title = "docupix";
                 apps, making it easier to share and use.
             </p>
 
-            <hr>
+            <hr />
 
             <h3 class="title is-5">Why convert PDF to PNG?</h3>
             <p>
@@ -95,7 +102,7 @@ const title = "docupix";
                 screenshots, and graphics.
             </p>
 
-            <hr>
+            <hr />
 
             <h3 class="title is-5">How does DocuPix work?</h3>
             <p>Using DocuPix is straightforward:</p>
@@ -110,11 +117,11 @@ const title = "docupix";
 
             <p>
                 If your PDF has multiple pages, each page will be converted into
-                a separate PNG. You can download them as a
-                single ZIP file for convenience.
+                a separate PNG. You can download them as a single ZIP file for
+                convenience.
             </p>
 
-            <hr>
+            <hr />
 
             <h3 class="title is-5">Fast, free, and private</h3>
             <p>
@@ -129,7 +136,7 @@ const title = "docupix";
                 connections.
             </p>
 
-            <hr>
+            <hr />
 
             <h3 class="title is-5">Is it safe?</h3>
             <p>
@@ -144,4 +151,23 @@ const title = "docupix";
     </div>
 
     <script type="module" src="/src/scripts/pdfToPng.ts"></script>
+    <script>
+        import { string } from "astro:schema";
+
+        const infoBtn = document.getElementById("infoBtn");
+        const content = document.getElementById("content");
+        const textInfoBtn = document.getElementById("text-infoBtn") as HTMLElement;
+
+        textInfoBtn.textContent = "Show More Information"
+
+        infoBtn?.addEventListener("click", () => {
+            content?.classList.toggle("hidden");
+            if (textInfoBtn instanceof HTMLElement) {
+                textInfoBtn.textContent = content?.classList.contains("hidden")
+                    ? "Show More Information"
+                    : "Show Less Information";
+            }
+        });
+
+    </script>
 </Layout>
