@@ -152,7 +152,6 @@ const title = "PDF to PNG Converter | docupix";
 
     <script type="module" src="/src/scripts/pdfToPng.ts"></script>
     <script>
-        import { string } from "astro:schema";
 
         const infoBtn = document.getElementById("infoBtn");
         const content = document.getElementById("content");
@@ -165,7 +164,7 @@ const title = "PDF to PNG Converter | docupix";
             if (textInfoBtn instanceof HTMLElement) {
                 textInfoBtn.textContent = content?.classList.contains("hidden")
                     ? "Show More Information"
-                    : "Show Less Information";
+                    : "Hide Information";
             }
         });
 

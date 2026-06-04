@@ -21,7 +21,7 @@
 }
 
 #app{
-    min-height: 90vh;
+    min-height: 75vh;
 }
 
 .stabilo{
@@ -29,13 +29,11 @@
     color: var(--text-reverse) !important;
     box-shadow: 4px 4px 0px var(--text);
     font-weight: bold;
-    text
 }
 
 
 .dropzone-container{
     min-width: var(--box-width-desktop);
-    /* min-height: 50vh; */
 }
 
 .dropzone{
