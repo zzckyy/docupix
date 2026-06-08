@@ -1,0 +1,67 @@
+---
+import Layout from "./layouts/base.astro";
+
+const title = "About Us | docupix";
+---
+
+<Layout title={title}>
+    <div
+        id="app"
+        class="is-flex is-justify-content-center is-align-items-center is-flex-direction-column has-text-centered"
+    >
+        <h1 class="title is-3">About docupix</h1>
+        <p class="subtitle is-6 has-text-grey">Simple. Fast. Private.</p>
+
+        <div class="content has-text-grey-dark">
+            <p>
+                <strong>docupix</strong> is a privacy-first, lightweight web tool
+                designed to simplify document conversion without compromising your
+                data.
+            </p>
+
+            <p>
+                We believe that basic utilities like converting files should be
+                fast, accessible, and secure. That’s why DocuPix processes
+                everything locally in your browser.
+            </p>
+
+            <p>
+                No uploads. No tracking. No unnecessary complexity. Just a clean
+                and seamless experience.
+            </p>
+
+            <p>
+                Built with performance and minimalism in mind, DocuPix is for
+                users who value speed, privacy, and simplicity in their
+                workflow.
+            </p>
+
+            <div class="mt-6 has-text-centered box">
+                <!-- Icon Flow -->
+                <div
+                    class="is-flex is-justify-content-center is-align-items-center mb-3"
+                    style="gap: 12px; font-size: 2rem;"
+                >
+                    <span class="icon has-text-grey-dark">
+                        <i class="bx bx-file"></i>
+                    </span>
+
+                    <span class="icon has-text-grey-light">
+                        <i class="bx bx-chevron-right"></i>
+                    </span>
+
+                    <span class="icon has-text-dark">
+                        <i class="bx bx-image"></i>
+                    </span>
+                </div>
+                <p class="is-size-6 has-text-grey-dark">
+                    Turn your documents into stunning images in seconds
+                </p>
+
+                <p class="is-size-7 has-text-grey-light">
+                    Fast. Private. No uploads required.
+                </p>
+            </div>
+        </div>
+    </div>
+</Layout>
