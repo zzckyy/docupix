@@ -1,0 +1,65 @@
+---
+import Layout from "./layouts/base.astro";
+
+const title = "Contact | docupix";
+---
+
+<Layout title={title}>
+    <div id="app" class="is-flex is-justify-content-center">
+        <div
+            class="mt-2 is-flex is-justify-content-center is-align-items-center is-flex-direction-column"
+        >
+            <h1 class="link">Contact Us</h1>
+            <div class="box mt-1">                
+                <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input" type="text" placeholder="Name" id="senderInput"/>
+                    <span class="icon is-small is-left">
+                        <i class="bx bx-user" />
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                    <textarea
+                    class="textarea"
+                    placeholder="Your Messages"
+                    id="messagesInput"
+                    />
+                </p>
+            </div>
+            <div class="field">
+                    <button class="button is-success" id="submit"> Send </button>
+                </p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        const submitBtn = document.getElementById('submit');
+
+        function sendWA(){
+            const senderName = (document.getElementById("senderInput") as HTMLInputElement).value;
+            const Messages = (document.getElementById("messagesInput") as HTMLTextAreaElement).value;
+            
+            const contactPhone = '6285156975120'
+            
+            if( !senderName || !Messages){
+                alert("Isi komplit");
+                return
+            }
+
+            const messagesText = 'Name:' + senderName + '\n' + 'Message: ' + Messages;
+
+            const url = `https://wa.me/${contactPhone}?text=${encodeURIComponent(messagesText)}`;
+
+            window.open(url);
+        }
+
+        submitBtn?.addEventListener('click', () => {
+            sendWA();
+        }
+        )
+    </script>
+</Layout>

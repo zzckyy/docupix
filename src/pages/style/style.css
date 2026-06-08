@@ -115,6 +115,10 @@
     font-weight: bold;
 }
 
+.contact{
+    width: 50vw;
+}
+
 footer{
     background-color: var(--fg);
 }
