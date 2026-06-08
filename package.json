@@ -15,7 +15,6 @@
     "astro": "^6.4.2",
     "boxicons": "^2.1.4",
     "bulma": "^1.0.4",
-    "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
     "pdfjs-dist": "^6.0.227"
   },
