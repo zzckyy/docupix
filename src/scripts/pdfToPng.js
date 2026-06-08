@@ -41,9 +41,19 @@ const convertPdfToPng = async (file, showLoading, hideLoading, setButtonDisabled
       if (!blob) return;
 
       if (totalPages === 1) {
-        saveAs(blob, file.name.replace(/\.pdf$/i, ".png"));
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
       } else {
-        zip.file(`${file.name.replace(/\.pdf$/i, "")} page-${i}.png`, blob);
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
       }
     }
 
