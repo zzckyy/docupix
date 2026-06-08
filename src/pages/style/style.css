@@ -8,6 +8,17 @@
     --box-width-desktop: 30vw;
 }
 
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: rgb(230, 230, 235);
+        --primary: rgb(170, 85, 255);
+        --fg: rgb(18, 18, 28);
+        --text-reverse: black;
+        --muted: rgb(40, 40, 55);
+    }
+}
+
 .brand{
     color: var(--text-reverse);
     font-weight: bold;
