@@ -2,6 +2,17 @@
 pdfjsLib.GlobalWorkerOptions.workerSrc =
   "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
+const downloadBlob = (blob, filename) => {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
+
 const updateFileInfo = (file, filename, filesize, filezone) => {
   const sizeMB = file.size / (1024 * 1024);
   filename.innerText = file.name;
@@ -41,26 +52,16 @@ const convertPdfToPng = async (file, showLoading, hideLoading, setButtonDisabled
       if (!blob) return;
 
       if (totalPages === 1) {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = filename;
-        a.click();
-        URL.revokeObjectURL(url);
+        downloadBlob(blob, file.name.replace(/\.pdf$/i, ".png"));
       } else {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = filename;
-        a.click();
-        URL.revokeObjectURL(url);
+        zip.file(`${file.name.replace(/\.pdf$/i, "")} page-${i}.png`, blob);
       }
     }
 
     if (totalPages > 1) {
       showLoading("Finalizing download...");
       const zipBlob = await zip.generateAsync({ type: "blob" });
-      saveAs(zipBlob, file.name.replace(/\.pdf$/i, ".zip"));
+      downloadBlob(zipBlob, file.name.replace(/\.pdf$/i, ".zip"));
     }
 
     hideLoading();
