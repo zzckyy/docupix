@@ -1,6 +1,7 @@
 :root{
     --text: black;
     --primary: rgb(128, 31, 207);
+    --fg: rgb(238, 232, 250);
     --text-reverse: white;
     --muted: rgb(234, 234, 234);
 
@@ -63,6 +64,12 @@
 
 }
 
+.link{
+    color: var(--primary);
+    text-decoration: none;
+    font-weight:400;
+}
+
 .hidden{
     display: none !important;
 }
@@ -91,8 +98,8 @@
 }
 
 #filename{
-    overflow-y:scroll;
-    width: 100%;
+    overflow-y:auto;
+    width: 90%;
     height: 25px;
 }
 
@@ -106,6 +113,10 @@
     background-color: rgba(252, 68, 68, 0.5);
     color: var(--text-reverse);
     font-weight: bold;
+}
+
+footer{
+    background-color: var(--fg);
 }
 
 @keyframes spin {
