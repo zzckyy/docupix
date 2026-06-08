@@ -1,6 +1,5 @@
 ---
 import Layout from "./layouts/base.astro";
-
 const title = "PDF to PNG Converter | docupix";
 ---
 
@@ -150,14 +149,24 @@ const title = "PDF to PNG Converter | docupix";
         </div>
     </div>
 
-    <script type="module" src="/public/scripts/pdfToPng.ts"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"
+    ></script>
+    <script type="module" src="/scripts/pdfToPng.js"></script>
     <script>
-
         const infoBtn = document.getElementById("infoBtn");
         const content = document.getElementById("content");
-        const textInfoBtn = document.getElementById("text-infoBtn") as HTMLElement;
+        const textInfoBtn = document.getElementById(
+            "text-infoBtn",
+        ) as HTMLElement;
 
-        textInfoBtn.textContent = "Show More Information"
+        textInfoBtn.textContent = "Show More Information";
 
         infoBtn?.addEventListener("click", () => {
             content?.classList.toggle("hidden");
@@ -167,6 +176,5 @@ const title = "PDF to PNG Converter | docupix";
                     : "Hide Information";
             }
         });
-
     </script>
 </Layout>
