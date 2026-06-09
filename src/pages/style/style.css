@@ -33,7 +33,7 @@
     font-weight: bold;
     background-color: var(--primary);
     padding: 8px;
-    box-shadow: 4px 4px 0px black;
+    box-shadow: 4px 4px 0px var(--text);
     /* height: 30px; */
 }
 
@@ -77,7 +77,7 @@
 .button{
     background-color: var(--primary);
     color: var(--text-reverse);
-    box-shadow: 4px 4px 0px black;
+    box-shadow: 4px 4px 0px var(--text);
     border: none;
     font-weight: bold;
     border-radius: 0px;
