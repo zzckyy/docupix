@@ -24,7 +24,7 @@ const title = "PDF to PNG Converter | docupix";
             <div
                 class="box dropzone is-flex is-justify-content-center is-align-items-center is-flex-direction-column mt-6"
             >
-                <i class="bx bx-folder-plus is-size-1"></i>
+                <i class="bx bx-folder-plus is-size-1 "></i>
                 <p>Drop Your PDF Here</p>
                 <input
                     type="file"
@@ -42,7 +42,7 @@ const title = "PDF to PNG Converter | docupix";
                 id="filezone"
             >
                 <div class="is-flex">
-                    <i class="bx bx-file is-size-4 mr-4"></i>
+                    <i class="bx bx-file is-size-4 mr-4 "></i>
                     <p id="filename"></p>
                 </div>
                 <div class="is-flex">
@@ -164,17 +164,15 @@ const title = "PDF to PNG Converter | docupix";
         const content = document.getElementById("content");
         const textInfoBtn = document.getElementById(
             "text-infoBtn",
-        ) as HTMLElement;
+        ) as HTMLParagraphElement;
 
         textInfoBtn.textContent = "Show More Information";
 
         infoBtn?.addEventListener("click", () => {
             content?.classList.toggle("hidden");
-            if (textInfoBtn instanceof HTMLElement) {
                 textInfoBtn.textContent = content?.classList.contains("hidden")
                     ? "Show More Information"
                     : "Hide Information";
-            }
         });
     </script>
 </Layout>

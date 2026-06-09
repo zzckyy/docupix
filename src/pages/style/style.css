@@ -19,6 +19,15 @@
     }
 }
 
+.icon{
+    color: var(--primary);
+}
+
+.box{
+    box-shadow: none;
+    border: 4px solid var(--primary);
+}
+
 .brand{
     color: var(--text-reverse);
     font-weight: bold;
